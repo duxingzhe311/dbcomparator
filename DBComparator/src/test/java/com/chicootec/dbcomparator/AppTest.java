@@ -1,4 +1,4 @@
-package com.chicootec.dbcompator;
+package com.chicootec.dbcomparator;
 
 import org.junit.Test;
 
