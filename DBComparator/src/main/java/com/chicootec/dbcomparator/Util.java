@@ -26,7 +26,9 @@ public class Util {
         res.add("不存在：" + str);
       } else {
         MetadataTable tmSrc = (MetadataTable) src.get(str);
-        if (tmSrc.equals(tmDest)) {
+        boolean eq = tmSrc.equals(tmDest);
+//        System.out.println(eq + ":" + tmSrc + "=" + tmDest);
+        if (eq) {
           res.add("一致：" + str);
         } else {
           res.add(str + "正确的：" + tmSrc);

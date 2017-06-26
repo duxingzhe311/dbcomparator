@@ -53,19 +53,26 @@ public class MetadataColumn {
       return false;
     if (super.getClass() != obj.getClass())
       return false;
+    
     MetadataColumn other = (MetadataColumn) obj;
     if (this.length != other.length)
       return false;
-    if (this.name == null)
-      if (other.name != null)
+
+    if (this.name == null) {
+      if (other.name != null) {
         return false;
-      else if (!(this.name.equals(other.name)))
+      }
+    } else if (!(this.name.equals(other.name))) {
+      return false;
+    }
+
+    if (this.type == null) {
+      if (other.type != null) {
         return false;
-    if (this.type == null)
-      if (other.type != null)
-        return false;
-      else if (!(this.type.equals(other.type)))
-        return false;
+      }
+    } else if (!(this.type.equals(other.type))) {
+      return false;
+    }
     return true;
   }
 

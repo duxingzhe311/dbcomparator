@@ -38,15 +38,17 @@ public class MetadataTable {
       return false;
     if (super.getClass() != obj.getClass())
       return false;
+    
     MetadataTable other = (MetadataTable) obj;
     if ((this.cols == null) && (other.cols != null)) {
       return false;
     }
 
-    if (this.tableName == null)
-      if (other.tableName != null)
+    if (this.tableName == null){
+      if (other.tableName != null){
         return false;
-      else if (!(this.tableName.equals(other.tableName))) {
+      }      
+    } else if (!(this.tableName.equals(other.tableName))) {
         return false;
       }
     return closEquals(this.cols, other.cols);
@@ -62,6 +64,11 @@ public class MetadataTable {
     }
     for (MetadataColumn cm : src) {
       if (!(dest.contains(cm))) {
+        return false;
+      }
+    }
+    for(MetadataColumn cm : dest){
+      if (!(src.contains(cm))) {
         return false;
       }
     }
