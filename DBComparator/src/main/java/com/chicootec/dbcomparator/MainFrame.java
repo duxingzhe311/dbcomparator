@@ -159,36 +159,39 @@ public class MainFrame extends JFrame {
     this.textArea.setFont(font);
     this.btnAction.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        Connection connRight = null;
-        Connection connWrong = null;
-        try {
-          DbCfg right = new DbCfg(
-              "jdbc:mysql://" + MainFrame.this.tfIpGood.getText() + ":"
-                  + MainFrame.this.tfPortBad.getText() + "/" + MainFrame.this.tfDbGood.getText(),
-              MainFrame.this.tfUserGood.getText(), MainFrame.this.tfPwdGood.getText());
+        new Thread(() -> {
+          Connection connRight = null;
+          Connection connWrong = null;
+          try {
+            DbCfg right = new DbCfg(
+                "jdbc:mysql://" + MainFrame.this.tfIpGood.getText() + ":"
+                    + MainFrame.this.tfPortBad.getText() + "/" + MainFrame.this.tfDbGood.getText(),
+                MainFrame.this.tfUserGood.getText(), MainFrame.this.tfPwdGood.getText());
 
-          DbCfg wrong = new DbCfg(
-              "jdbc:mysql://" + MainFrame.this.tfIpBad.getText() + ":"
-                  + MainFrame.this.tfPortBad.getText() + "/" + MainFrame.this.tfDbBad.getText(),
-              MainFrame.this.tfUserBad.getText(), MainFrame.this.tfPwdBad.getText());
+            DbCfg wrong = new DbCfg(
+                "jdbc:mysql://" + MainFrame.this.tfIpBad.getText() + ":"
+                    + MainFrame.this.tfPortBad.getText() + "/" + MainFrame.this.tfDbBad.getText(),
+                MainFrame.this.tfUserBad.getText(), MainFrame.this.tfPwdBad.getText());
 
-          connRight = Util.getConn(right);
-          connWrong = Util.getConn(wrong);
-          Set<String> set = Util.compare(connRight, connWrong);
-          StringBuilder sb = new StringBuilder();
+            connRight = Util.getConn(right);
+            connWrong = Util.getConn(wrong);
+            Set<String> set = Util.compare(connRight, connWrong);
+            StringBuilder sb = new StringBuilder();
 
-          for (String str : set) {
-            sb.append(str).append(System.lineSeparator());
+            for (String str : set) {
+              sb.append(str).append(System.lineSeparator());
+            }
+            MainFrame.this.textArea.setText(sb.toString());
+          } catch (Exception e2) {
+            e2.printStackTrace();
+            MainFrame.this.textArea.setText(e2.toString());
+            JOptionPane.showMessageDialog(MainFrame.this, "出错了！你是猴子请来的逗比吗？？");
+          } finally {
+            Util.close(connRight);
+            Util.close(connWrong);
           }
-          MainFrame.this.textArea.setText(sb.toString());
-        } catch (Exception e2) {
-          e2.printStackTrace();
-          MainFrame.this.textArea.setText(e2.toString());
-          JOptionPane.showMessageDialog(MainFrame.this, "出错了！你是猴子请来的逗比吗？？");
-        } finally {
-          Util.close(connRight);
-          Util.close(connWrong);
-        }
+        }).start();
+        MainFrame.this.textArea.setText("执行中，请等待。。。");
       }
     });
     this.textArea.setLineWrap(true);
