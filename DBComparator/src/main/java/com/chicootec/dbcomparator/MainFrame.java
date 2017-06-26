@@ -128,13 +128,13 @@ public class MainFrame extends JFrame {
         String dbGood = MainFrame.this.tfDbGood.getText();
         String userGood = MainFrame.this.tfUserGood.getText();
         String pwdGood = MainFrame.this.tfPwdGood.getText();
-        
+
         String ipBad = MainFrame.this.tfIpBad.getText();
         String portBad = MainFrame.this.tfPortBad.getText();
         String dbBad = MainFrame.this.tfDbBad.getText();
         String userBad = MainFrame.this.tfUserBad.getText();
         String pwdBad = MainFrame.this.tfPwdBad.getText();
-        
+
         MainFrame.this.tfIpGood.setText(ipBad);
         MainFrame.this.tfPortGood.setText(portBad);
         MainFrame.this.tfDbGood.setText(dbBad);
