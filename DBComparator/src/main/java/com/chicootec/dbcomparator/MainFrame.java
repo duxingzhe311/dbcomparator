@@ -91,17 +91,17 @@ public class MainFrame extends JFrame {
           System.exit(0);
       }
     });
-    this.tfIpGood.setText("192.168.1.11");
-    this.tfPortGood.setText("3306");
-    this.tfDbGood.setText("hcc");
-    this.tfUserGood.setText("root");
-    this.tfPwdGood.setText("cloud_angel");
+    this.tfIpGood.setText("123.56.131.34");
+    this.tfPortGood.setText("3310");
+    this.tfDbGood.setText("pre_hcc");
+    this.tfUserGood.setText("pre_hcc_rw");
+    this.tfPwdGood.setText("VAUcfiZj3GOGBWHk");
 
-    this.tfIpBad.setText("192.168.1.149");
-    this.tfPortBad.setText("3306");
+    this.tfIpBad.setText("123.57.76.181");
+    this.tfPortBad.setText("3309");
     this.tfDbBad.setText("hcc");
-    this.tfUserBad.setText("root");
-    this.tfPwdBad.setText("cloud_angel");
+    this.tfUserBad.setText("hcc_rw");
+    this.tfPwdBad.setText("odMj6jUfzcUB7dbi");
 
     this.tfIpGood.setFont(font);
     this.tfPortGood.setFont(font);
@@ -165,7 +165,7 @@ public class MainFrame extends JFrame {
           try {
             DbCfg right = new DbCfg(
                 "jdbc:mysql://" + MainFrame.this.tfIpGood.getText() + ":"
-                    + MainFrame.this.tfPortBad.getText() + "/" + MainFrame.this.tfDbGood.getText(),
+                    + MainFrame.this.tfPortGood.getText() + "/" + MainFrame.this.tfDbGood.getText(),
                 MainFrame.this.tfUserGood.getText(), MainFrame.this.tfPwdGood.getText());
 
             DbCfg wrong = new DbCfg(
