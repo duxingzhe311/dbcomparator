@@ -25,8 +25,8 @@ public class MainFrame extends JFrame {
   private static final long serialVersionUID = 6164842096365815740L;
   private static final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
   private static final int TEXT_FIELD_WIDTH = 30;
-  private static final int FRAME_WIDTH = dimension.width - 20;
-  private static final int FRAME_HEIGHT = dimension.height - 40;
+  private static final int FRAME_WIDTH = dimension.width - 40;
+  private static final int FRAME_HEIGHT = dimension.height - 60;
 
   private JPanel panelTop = new JPanel();
 
@@ -52,7 +52,7 @@ public class MainFrame extends JFrame {
   private JButton btnExchange = new JButton("交换");
   private JButton btnAction = new JButton("执行");
 
-  private JTextArea textArea = new JTextArea("第一行是正确的，第二行是错误的。需要JRE.1.7或以上版本。祝你幸福！", 44, 105);
+  private JTextArea textArea = new JTextArea("第一行是正确的，第二行是错误的。需要JRE.1.7或以上版本。祝你幸福！", 40, 105);
   private JPanel panelBottom = new JPanel();
 
   public MainFrame() {
@@ -214,10 +214,10 @@ public class MainFrame extends JFrame {
         mf.setTitle("数据库对比工具");
         mf.setSize(MainFrame.FRAME_WIDTH, MainFrame.FRAME_HEIGHT);
         mf.setLocation(10, 5);
-        mf.setDefaultCloseOperation(3);
+        mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mf.setIconImage(
             Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/res/mysql.png")));
-        mf.setResizable(false);
+//        mf.setResizable(false);
         mf.setVisible(true);
       }
     });
